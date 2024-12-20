@@ -12,20 +12,42 @@
     <link rel="stylesheet" href="/assets/css/nav.css?v=01" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6840529569014734"
      crossorigin="anonymous"></script>
+
+    <style>
+      /* Change color of sillynet title to #b3fbff */
+      .title {
+        color: #b3fbff;
+      }
+
+      /* Style for FPS counter */
+      #fps-counter {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px;
+        border-radius: 3px;
+        z-index: 1000;
+      }
+    </style>
+
   </head>
   <body class="center" onload="SplashT">
     <div class="f-nav"></div>
     <div id="particles-js">
       <script rel="preload" src="https://cdn.jsdelivr.net/particles.js/2.0.0/"></script>
       <div class="main">
-<h1 class="title">&#73;&#110;&#116;&#101;&#114;&#115;&#116;&#101;&#108;&#108;&#97;&#114;</h1>
+        <h1 class="title">&#83;&#105;&#108;&#108;&#121;&#78;&#101;&#116;</h1>
         <p id="splash"></p>
         <div class="search-container">
           <form id="fv" method="POST">
             <input
               id="iv"
               class="search-home"
-              placeholder="Search or enter a URL"
+              placeholder="search the web..."
               type="text" />
           </form>
         </div>
@@ -37,6 +59,36 @@
     <script src="./assets/ultra/config.js?v=10-02-2024"></script>
     <script src="assets/js/f.js"></script>
     <script src="/assets/js/mv.js?v=001"></script>
+
+    <!-- FPS Counter Script -->
+    <script>
+      let lastTime = 0;
+      let fps = 0;
+
+      function calculateFPS(timestamp) {
+        if (lastTime) {
+          let delta = timestamp - lastTime;
+          fps = Math.round(1000 / delta);
+        }
+        lastTime = timestamp;
+
+        // Update FPS counter on the screen
+        document.getElementById('fps-counter').textContent = fps + ' FPS';
+
+        requestAnimationFrame(calculateFPS);
+      }
+
+      // Add FPS counter element to the page
+      window.onload = function() {
+        const fpsElement = document.createElement('div');
+        fpsElement.id = 'fps-counter';
+        document.body.appendChild(fpsElement);
+
+        // Start calculating FPS
+        requestAnimationFrame(calculateFPS);
+      };
+    </script>
+
     <!-- DO NOT REMOVE-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WKJQ5QHQTJ"></script>
     <script>
@@ -45,7 +97,6 @@
         dataLayer.push(arguments)
       }
       gtag("js", new Date())
-
       gtag("config", "G-WKJQ5QHQTJ")
     </script>
     <!-- DO NOT REMOVE-->
