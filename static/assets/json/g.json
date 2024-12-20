@@ -1954,5 +1954,17 @@
     "link": "https://emulator-games.pages.dev/nes/Super Mario Bros. 3",
     "image": "/assets/media/icons/emulator/smb3.webp",
     "categories": ["all", "emu"]
+  },
+  {
+    "name": "Selenite",
+    "link": "https://selenite.cc/",
+    "image": "https://avatars.githubusercontent.com/u/147996775?s=280&v=4",
+    "categories": ["all"]
+  },
+  {
+    "name": "Brawl Stars",
+    "link": "https://playhop.com/app/387326",
+    "image": "https://static.playhop.com/images/35c01_1881364_e9306/d32b17bf8/2a00000193264902_579576a/71ef347c96833b3a09d1_ba4ad1/pjpg128x128",
+    "categories": ["all"]
   }
 ]
