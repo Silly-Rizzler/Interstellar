@@ -183,6 +183,10 @@ const SplashT = [
   "@SillyUnblocks on yt",
   "who even reads these messages?",
   "made by qcactus / silly",
+  "feel free to share this site link",
+  "send this site to friends :)",
+  "feel free to share this site with people",
+  "feel free to share this site link",
 ];
 
 let SplashI = Math.floor(Math.random() * SplashT.length);
