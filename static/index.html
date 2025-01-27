@@ -5,14 +5,12 @@
     <meta name="referrer" content="no-referrer" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="monetag" content="fa6e07c3f627cf115e776dff97d26327">  <!-- Added meta tag here -->
+    <meta name="monetag" content="fa6e07c3f627cf115e776dff97d26327"> <!-- Added meta tag here -->
     <link rel="shortcut icon" id="tab-favicon" href="favicon.png" />
     <title id="t">Home</title>
     <link rel="stylesheet" href="/assets/css/global.css?v=6" />
     <link rel="stylesheet" href="/assets/css/h.css?v=01" />
     <link rel="stylesheet" href="/assets/css/nav.css?v=01" />
-    
-    <!-- Removed the Google Ads script -->
     
     <style>
       /* Change color of sillynet title to #b3fbff */
@@ -33,26 +31,155 @@
         border-radius: 3px;
         z-index: 1000;
       }
+
+      /* Loader Animation Styles */
+      .loader {
+        width: 80px;
+        height: 50px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+      }
+
+      .loader-text {
+        position: absolute;
+        top: 0;
+        padding: 0;
+        margin: 0;
+        color: #C8B6FF;
+        animation: text_713 3.5s ease both infinite;
+        font-size: .8rem;
+        letter-spacing: 1px;
+      }
+
+      .load {
+        background-color: #9A79FF;
+        border-radius: 50px;
+        display: block;
+        height: 16px;
+        width: 16px;
+        bottom: 0;
+        position: absolute;
+        transform: translateX(64px);
+        animation: loading_713 3.5s ease both infinite;
+      }
+
+      .load::before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: #D1C2FF;
+        border-radius: inherit;
+        animation: loading2_713 3.5s ease both infinite;
+      }
+
+      @keyframes text_713 {
+        0% {
+          letter-spacing: 1px;
+          transform: translateX(0px);
+        }
+        40% {
+          letter-spacing: 2px;
+          transform: translateX(26px);
+        }
+        80% {
+          letter-spacing: 1px;
+          transform: translateX(32px);
+        }
+        90% {
+          letter-spacing: 2px;
+          transform: translateX(0px);
+        }
+        100% {
+          letter-spacing: 1px;
+          transform: translateX(0px);
+        }
+      }
+
+      @keyframes loading_713 {
+        0% {
+          width: 16px;
+          transform: translateX(0px);
+        }
+        40% {
+          width: 100%;
+          transform: translateX(0px);
+        }
+        80% {
+          width: 16px;
+          transform: translateX(64px);
+        }
+        90% {
+          width: 100%;
+          transform: translateX(0px);
+        }
+        100% {
+          width: 16px;
+          transform: translateX(0px);
+        }
+      }
+
+      @keyframes loading2_713 {
+        0% {
+          transform: translateX(0px);
+          width: 16px;
+        }
+        40% {
+          transform: translateX(0%);
+          width: 80%;
+        }
+        80% {
+          width: 100%;
+          transform: translateX(0px);
+        }
+        90% {
+          width: 80%;
+          transform: translateX(15px);
+        }
+        100% {
+          transform: translateX(0px);
+          width: 16px;
+        }
+      }
+
+      /* Hide all content by default */
+      .main-content {
+        display: none;
+      }
     </style>
   </head>
-  <body class="center" onload="SplashT">
+  <body class="center" onload="SplashT()">
     <div class="f-nav"></div>
     <div id="particles-js">
       <script rel="preload" src="https://cdn.jsdelivr.net/particles.js/2.0.0/"></script>
-      <div class="main">
-        <h1 class="title">&#83;&#105;&#108;&#108;&#121;&#78;&#101;&#116;</h1>
-        <p id="splash"></p>
-        <div class="search-container">
-          <form id="fv" method="POST">
-            <input
-              id="iv"
-              class="search-home"
-              placeholder="search the web..."
-              type="text" />
-          </form>
+
+      <!-- Main content that will be hidden during loader animation -->
+      <div class="main-content">
+        <div class="main">
+          <h1 class="title">&#83;&#105;&#108;&#108;&#121;&#78;&#101;&#116;</h1>
+          <p id="splash"></p>
+          <div class="search-container">
+            <form id="fv" method="POST">
+              <input
+                id="iv"
+                class="search-home"
+                placeholder="search the web..."
+                type="text" />
+            </form>
+          </div>
         </div>
       </div>
+
+      <!-- Loader animation here -->
+      <div class="loader" id="loader">
+        <span class="loader-text">Loading...</span>
+        <span class="load"></span>
+      </div>
     </div>
+
     <script src="assets/js/i.js?v=02"></script>
     <script src="/assets/js/home.js?v=00"></script>
     <script src="./assets/ultra/bundle.js?v=10-02-2024"></script>
@@ -86,6 +213,18 @@
 
         // Start calculating FPS
         requestAnimationFrame(calculateFPS);
+
+        // Show loader and hide content for 3 seconds
+        const loader = document.getElementById('loader');
+        const mainContent = document.querySelector('.main-content');
+
+        loader.style.display = 'block';
+        mainContent.style.display = 'none';
+
+        setTimeout(() => {
+          loader.style.display = 'none';
+          mainContent.style.display = 'block'; // Show the main content after 3 seconds
+        }, 3000); // Hide loader and show content after 3 seconds
       };
     </script>
 
